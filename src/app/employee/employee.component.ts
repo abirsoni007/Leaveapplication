@@ -1,4 +1,8 @@
 import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+import {EmployeeService} from '../employee/employee.service'
+import { LeaveService } from '../leave.service.ts.service';
+
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -15,17 +19,19 @@ export class EmployeeComponent implements OnInit {
   StartDate = '';
   EndDate ='';
 
-  constructor() {
-    this.leavedetail.emit(this.leaveDetails);
-  }
+//  
+constructor(private _leaveservice : LeaveService){
+    
+}
 
   onApplyLeave(){
     this.leaveDetails.push({
       name: this.employeeName,
       startdate: this.StartDate,
-      enddate: this.EndDate,
+      enddate: this.EndDate
       
     });
-    
+    this._leaveservice.onSendleave(this.leaveDetails);
+    // this._employeeservice.leavedetail.next(this.leaveDetails);
   }
 }

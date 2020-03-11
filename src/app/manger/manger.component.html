@@ -1,12 +1,23 @@
 <div class="row">
     <div class="container">
         <div class="col-xs-8">
-        <div>
-
-        
-             
+            <div
+            class="panel panel-default"
+            *ngFor = "let element of leaveDetail">
+           
+            <div class="panel-heading">{{ element.name }}
+            <p class="panel panel-default panel-heading panel-right">ggdf</p>
+        </div>
+            <div class="panel-body">
             
+            <p>
+                <b>{{ element.startdate }}</b>
+                To
+                <b>{{ element.enddate}}</b>
+            
+            </p>
+            </div>
+            </div>
         </div>
         </div>
     </div>
-</div>

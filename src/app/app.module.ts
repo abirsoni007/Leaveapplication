@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
 import { MangerComponent } from './manger/manger.component';
+import { EmployeeService } from './employee/employee.service';
+import { LeaveService } from './leave.service.ts.service';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,7 @@ import { MangerComponent } from './manger/manger.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [EmployeeService, LeaveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
