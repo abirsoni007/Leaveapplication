@@ -10,29 +10,31 @@ import { Data } from '@angular/router';
   styleUrls: ['./manger.component.css']
 })
 export class MangerComponent implements OnInit {
-  leaveDetail:string[]=[];
- 
+  leaveDetails:string[];
+  s:string
+  leaveStatus//=[this.leaveDetails[this.s]];
   
-  // constructor(public _employeeservice: EmployeeService) {
-
-  //  }
+  
   constructor(private _leaveservice : LeaveService){
 
   }
+  
   ngOnInit(): void {
-   
-    
-    this.leaveDetail =  this._leaveservice.currentNameSubject$.getValue();
+    this.leaveDetails =  this._leaveservice.currentLeave$.getValue();
     // this._leaveservice.employee$.subscribe(details =>{
     //   debugger
     //   this.leaveDetail=details})
-    console.log(this.leaveDetail);
-    // this.leaveDetail.push(this._leaveservice.currentNameSubject$.getValue());
-    // this._employeeservice.leavedetail.pipe().subscribe(Response=>{
-    //   this.leaveDetail=Response;
-    //   console.log(this.leaveDetail)
-    // })
-
+    console.log(this.leaveDetails);
+    
   }
 
+  onleaveStatus(data){
+    this.s=data;
+   
+    this.leaveStatus.push({status:this.s})
+    console.log(this.leaveStatus)
+
+    this._leaveservice.onLeaveStatus(this.leaveDetails);
+  
+  }
 }

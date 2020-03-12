@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
+
 import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 
 export class LeaveService {
-  currentNameSubject$ = new BehaviorSubject<[]>([]);
-  private _employee = new Subject<[]>();
-  employee$ = this._employee.asObservable();
+  currentLeave$ = new BehaviorSubject<[]>([]);
+  // private _employee = new Subject<[]>();
+  // employee$ = this._employee.asObservable();
+
+  currentLeaveStatus$ = new BehaviorSubject<[]>([]);
+  
   constructor() { 
     
   }
-  onSendleave(detail:any){
+  onSendleave(leaves:any){
    
-      this.currentNameSubject$.next(detail)
+      this.currentLeave$.next(leaves);
+  }
+  onLeaveStatus(status:any){
+    this.currentLeaveStatus$.next(status);
+    console.log(status)
   }
 }

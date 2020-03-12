@@ -1,5 +1,5 @@
 import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
-import {EmployeeService} from '../employee/employee.service'
+
 import { LeaveService } from '../leave.service.ts.service';
 
 
@@ -10,28 +10,40 @@ import { LeaveService } from '../leave.service.ts.service';
 })
 export class EmployeeComponent implements OnInit {
   
-  ngOnInit(): void {
-   
-  }
-  @Output() public leavedetail = new EventEmitter();
-  public leaveDetails=[];
+  leaveDetails=[];
   employeeName = '';
   StartDate = '';
   EndDate ='';
-
-//  
-constructor(private _leaveservice : LeaveService){
+  levstatus='';
+  constructor(private _leaveservice : LeaveService){
     
-}
+  }
+  ngOnInit(): void {
+    // this.leaveDetails= this._leaveservice.currentLeaveStatus$.getValue();
+    // console.log(this.leaveDetails);
+    this._leaveservice.currentLeaveStatus$.subscribe(details =>{
+   
+      this.leaveDetails=details})
+   
+    console.log(this.leaveDetails);
+  }
+  
+
 
   onApplyLeave(){
     this.leaveDetails.push({
       name: this.employeeName,
       startdate: this.StartDate,
-      enddate: this.EndDate
+      enddate: this.EndDate,
+      status: this.levstatus
       
-    });
+    }); 
     this._leaveservice.onSendleave(this.leaveDetails);
     // this._employeeservice.leavedetail.next(this.leaveDetails);
+  }
+  ngOnDestroy() {
+   
+    
+
   }
 }

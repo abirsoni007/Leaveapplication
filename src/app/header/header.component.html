@@ -6,8 +6,11 @@
   
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a routerLink="/employee" (click)="onSelect('empolyee')" >Empolyee</a></li>
-          <li><a href="#"  (click)="onSelect('manger')">Manger</a></li>
+          <li routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}">
+           <a routerLink="/">Empolyee</a></li>
+          <li routerLinkActive="active"
+          ><a routerLink="/manger"  >Manger</a></li>
         </ul>
       </div>
     </div>
