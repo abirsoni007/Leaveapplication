@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
 import { MangerComponent } from './manger/manger.component';
-import { EmployeeService } from './employee/employee.service';
+
 import { LeaveService } from './leave.service.ts.service';
 
 
@@ -22,7 +22,7 @@ import { LeaveService } from './leave.service.ts.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [EmployeeService, LeaveService],
+  providers: [LeaveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,23 +5,24 @@
             class="panel panel-default"
             *ngFor = "let leaveDetail of leaveDetails">
            
-                <div class="panel-heading">{{ leaveDetail.name }}
+                <div class="panel-heading">{{ leaveDetail.name | uppercase }}
+                    <div class="pull-right">{{ s }}</div>
                 </div>
                 <div class="panel-body">
                 
                     <p>
-                        <b>{{ leaveDetail.startdate }}</b>
+                        <b>{{ leaveDetail.startdate | date:'fullDate' }}</b>
                         To
-                        <b>{{ leaveDetail.enddate}}</b>
+                        <b>{{ leaveDetail.enddate | date:'fullDate'}}</b>
                     </p>
                     <button type="string"
-                        class="btn btn-success" (click)="onleaveStatus('Approved')"
+                        class="btn btn-success" (click)="onleaveStatus( leaveDetail.id, 'Approved')"
                        
                         >Approved
                     </button>
-                    
+                    &nbsp;
                     <button
-                        class="btn btn-danger" (click)="onleaveStatus('Rejected')" 
+                        class="btn btn-danger" (click)="onleaveStatus( leaveDetail.id,'Rejected')" 
                      
                         >Rejected
                     </button>

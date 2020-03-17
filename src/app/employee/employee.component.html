@@ -1,17 +1,28 @@
 <div class="row">
     <div class="container">
+     <form>
         <div class="col-xs-6">
+            <div class="form-group">
             <label>Employee Name</label>
-      <input type="text" class="form-control" [(ngModel)]="employeeName">
-      <label>Date of leave</label>
-      <input type="date" class="form-control" [(ngModel)]="StartDate">
-      <label>End of leave</label>
-      <input type="date" class="form-control" [(ngModel)]="EndDate">
-      <br>
-      <button
-        class="btn btn-primary"
-        (click)="onApplyLeave()">Apply</button>
+            <input type="text" 
+            required
+            #name = "ngModel"
+            class="form-control" 
+            [class.is-invaild]="name.invalid"
+            name="name" [(ngModel)]="EmployeeName">
+            <label>Date of leave</label>
+            
+            <input type="date" class="form-control" name="sDate" [(ngModel)]="StartDate">
+            <label>End of leave</label>
+            <input type="date" class="form-control" name="eDate" [(ngModel)]="EndDate">
+            <br>
+            <button
+                class="btn btn-primary"
+                (click)="onApplyLeave()">Apply
+            </button>
+          </div>
         </div>
+     </form>
     </div>
 </div>
 <hr>
@@ -21,12 +32,14 @@
         <div
             class="panel panel-default"
             *ngFor="let detail of leaveDetails">
-            <div class="panel-heading">{{ detail.name }}</div>
+            <div class="panel-heading">{{ detail.name | uppercase }}
+                <div class="pull-right">{{ detail.status }}</div>
+            </div>
             <div class="panel-body">
             <p>
-                <b>{{ detail.startdate }}</b>
-                To
-                <b>{{ detail.enddate}}</b>
+                <b>{{ detail.startdate | date:'mediumDate' }}</b>
+               <span>To</span> 
+                <b>{{ detail.enddate | date:'mediumDate'}}</b>
             
             </p>
             </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
-
 import { LeaveService } from '../leave.service.ts.service';
 
 
@@ -10,15 +9,19 @@ import { LeaveService } from '../leave.service.ts.service';
 })
 export class EmployeeComponent implements OnInit {
   
-  leaveDetails=[];
-  employeeName = '';
+  leaveDetails:any=[];
+  id:string;
+  EmployeeName = '';
   StartDate = '';
   EndDate ='';
-  levstatus='';
+  status='Pending';
+  
   constructor(private _leaveservice : LeaveService){
     
   }
+  
   ngOnInit(): void {
+    
     // this.leaveDetails= this._leaveservice.currentLeaveStatus$.getValue();
     // console.log(this.leaveDetails);
     this._leaveservice.currentLeaveStatus$.subscribe(details =>{
@@ -31,19 +34,22 @@ export class EmployeeComponent implements OnInit {
 
 
   onApplyLeave(){
+    
     this.leaveDetails.push({
-      name: this.employeeName,
+      id:this.leaveDetails.length+1,
+      name: this.EmployeeName,
       startdate: this.StartDate,
       enddate: this.EndDate,
-      status: this.levstatus
+      status:this.status
       
-    }); 
+      
+    });
+    
+   
     this._leaveservice.onSendleave(this.leaveDetails);
     // this._employeeservice.leavedetail.next(this.leaveDetails);
-  }
-  ngOnDestroy() {
    
-    
-
+   
   }
+  
 }
