@@ -1,5 +1,5 @@
 import { Component, Output, Input } from '@angular/core';
-import { LeaveService } from './leave.service.ts.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,11 @@ import { LeaveService } from './leave.service.ts.service';
 })
 export class AppComponent {
   title = 'Leaveapllication';
-  loadedFeature ='employee';
- 
-  
-  onNavigate(feature: string){
-  this.loadedFeature= feature;
-}
+  loadedFeature = 'employee';
+  // masterArray = ['Create', 'Foo', 'Bar'];
+
+
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
+  }
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeaveService } from '../leave.service.ts.service';
+import { NgForm } from '@angular/forms';
+
 
 
 @Component({
@@ -8,48 +10,38 @@ import { LeaveService } from '../leave.service.ts.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  
-  leaveDetails:any=[];
-  id:string;
+  @ViewChild('fname') applyForm: NgForm;
+  leaveDetails: any = [];
+  id: string = '';
   EmployeeName = '';
   StartDate = '';
-  EndDate ='';
-  status='Pending';
-  
-  constructor(private _leaveservice : LeaveService){
-    
+  EndDate = '';
+  status = 'Pending';
+
+  constructor(private _leaveservice: LeaveService) {
+
   }
-  
+
   ngOnInit(): void {
-    
     // this.leaveDetails= this._leaveservice.currentLeaveStatus$.getValue();
     // console.log(this.leaveDetails);
-    this._leaveservice.currentLeaveStatus$.subscribe(details =>{
-   
-      this.leaveDetails=details})
-   
+    this._leaveservice.currentLeaveStatus$.subscribe(details => {
+      this.leaveDetails = details
+    })
     console.log(this.leaveDetails);
   }
-  
-
-
-  onApplyLeave(){
-    
+  onApplyLeave() {
     this.leaveDetails.push({
-      id:this.leaveDetails.length+1,
+      id: this.leaveDetails.length + 1,
       name: this.EmployeeName,
       startdate: this.StartDate,
       enddate: this.EndDate,
-      status:this.status
-      
-      
+      status: this.status
+
     });
-    
-   
     this._leaveservice.onSendleave(this.leaveDetails);
+    this.applyForm.reset();
     // this._employeeservice.leavedetail.next(this.leaveDetails);
-   
-   
   }
-  
+
 }
