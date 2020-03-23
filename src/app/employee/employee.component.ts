@@ -34,22 +34,22 @@ export class EmployeeComponent implements OnInit {
     // if (this.StartDate > this.currentdate) {
     //   console.log(this.currentdate)
     // }
-      if (this.StartDate > this.EndDate) {
-        alert("Please Enter a valid date");
+    if (this.StartDate > this.EndDate) {
+      alert("Please Enter a valid date");
 
-        this.applyForm.reset();
-      } else {
-        this.leaveDetails.push({
-          id: this.leaveDetails.length + 1,
-          name: this.EmployeeName,
-          startdate: this.StartDate,
-          enddate: this.EndDate,
-          status: this.status 
-        });
-        this._leaveservice.onSendleave(this.leaveDetails);
-        this.applyForm.reset();
-        // this._employeeservice.leavedetail.next(this.leaveDetails);
-      }
-    
+      this.applyForm.reset();
+    } else {
+      this.leaveDetails.push({
+        id: this.leaveDetails.length + 1,
+        name: this.EmployeeName,
+        startdate: this.StartDate,
+        enddate: this.EndDate,
+        status: this.status
+      });
+      this._leaveservice.onSendleave(this.leaveDetails);
+      this.applyForm.reset();
+      // this._employeeservice.leavedetail.next(this.leaveDetails);
+    }
+
   }
 }
