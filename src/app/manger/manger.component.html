@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="container">
+        <div class="col-xs-8">
+            <div class="panel panel-default" *ngFor="let leaveDetail of leaveDetails">
+
+                <div class="panel-heading">{{ leaveDetail.name | uppercase }}
+                    <div class="pull-right">{{ leaveDetail.status }}</div>
+                </div>
+                <div class="panel-body">
+
+                    <p>
+                        <b>{{ leaveDetail.startdate | date:'fullDate' }}</b>
+                        To
+                        <b>{{ leaveDetail.enddate | date:'fullDate'}}</b>
+                    </p>
+                    <button type="string" class="btn btn-success"
+                        (click)="onleaveStatus( leaveDetail.id, 'Approved')">Approved
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-danger" (click)="onleaveStatus( leaveDetail.id,'Rejected')">Rejected
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

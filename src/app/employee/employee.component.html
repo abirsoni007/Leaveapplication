@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="container">
+
+        <form (ngSubmit)="onApplyLeave()" #fname="ngForm">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Employee Name</label>
+                    <input type="text" required #name="ngModel" class="form-control" [class.is-invaild]="name.invalid"
+                        name="employeename" [(ngModel)]="EmployeeName">
+                    <span class="help-block" *ngIf="!name.valid && name.touched">Please Enter a Name</span>
+                    <label>Date of leave</label>
+                    <input type="date" required #sdate="ngModel" class="form-control" name="sDate"
+                        [(ngModel)]="StartDate">
+                    <span class="help-block" *ngIf="!sdate.valid && sdate.touched">Please Enter a Start Date</span>
+                    <label>End of leave</label>
+                    <input type="date" required #edate="ngModel" class="form-control" name="eDate"
+                        [(ngModel)]="EndDate">
+                    <span class="help-block" *ngIf="!edate.valid && edate.touched">Please Enter a End Date</span>
+               
+                    <br>
+                    <button class="btn btn-primary" [disabled]="!fname.valid">Apply
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="container">
+        <div class="col-xs-8">
+            <div class="panel panel-default" *ngFor="let detail of leaveDetails">
+                <div class="panel-heading">{{ detail.name | uppercase }}
+                    <div class="pull-right">{{ detail.status }}</div>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <b>{{ detail.startdate | date:'mediumDate' }}</b>
+                        To
+                        <b>{{ detail.enddate | date:'mediumDate'}}</b>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
