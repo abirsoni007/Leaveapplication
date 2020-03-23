@@ -17,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   StartDate = '';
   EndDate = '';
   status = 'Pending';
-  // currentdate: any = new Date();
+   currentdate: any = new Date();
   constructor(private _leaveservice: LeaveService) {
 
   }
@@ -31,9 +31,9 @@ export class EmployeeComponent implements OnInit {
     console.log(this.leaveDetails);
   }
   onApplyLeave() {
-    // if (this.StartDate > this.currentdate) {
-    //   console.log(this.currentdate)
-    // }
+    if (this.StartDate > this.currentdate) {
+      console.log(this.currentdate)
+   }
     if (this.StartDate > this.EndDate) {
       alert("Please Enter a valid date");
 
