@@ -17,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   StartDate = '';
   EndDate = '';
   status = 'Pending';
-
+   currentdate: any = new Date();
   constructor(private _leaveservice: LeaveService) {
 
   }
@@ -31,17 +31,25 @@ export class EmployeeComponent implements OnInit {
     console.log(this.leaveDetails);
   }
   onApplyLeave() {
-    this.leaveDetails.push({
-      id: this.leaveDetails.length + 1,
-      name: this.EmployeeName,
-      startdate: this.StartDate,
-      enddate: this.EndDate,
-      status: this.status
+    if (this.StartDate > this.currentdate) {
+      console.log(this.currentdate)
+   }
+    if (this.StartDate > this.EndDate) {
+      alert("Please Enter a valid date");
 
-    });
-    this._leaveservice.onSendleave(this.leaveDetails);
-    this.applyForm.reset();
-    // this._employeeservice.leavedetail.next(this.leaveDetails);
+      this.applyForm.reset();
+    } else {
+      this.leaveDetails.push({
+        id: this.leaveDetails.length + 1,
+        name: this.EmployeeName,
+        startdate: this.StartDate,
+        enddate: this.EndDate,
+        status: this.status
+      });
+      this._leaveservice.onSendleave(this.leaveDetails);
+      this.applyForm.reset();
+      // this._employeeservice.leavedetail.next(this.leaveDetails);
+    }
+
   }
-
 }
