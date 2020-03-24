@@ -12,8 +12,7 @@ import { LeaveService } from '../leave.service.ts.service';
 export class MangerComponent implements OnInit {
 
   leaveDetails: string[];
-  s: string;
-  d: string;
+
   update: any[];
   // leaveStatus//=[this.leaveDetails[this.s]];
 
@@ -33,10 +32,6 @@ export class MangerComponent implements OnInit {
   }
 
   onleaveStatus(uid: string, data: string) {
-
-    this.d = data
-    // let newdata = this._leaveservice.currentLeave$.value.findIndex((item: any)=> { item.id === uid });
-    // console.log(newdata)
 
     this.leaveDetails.forEach((element: any) => {
       if (element.id === uid) {

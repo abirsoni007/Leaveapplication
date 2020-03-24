@@ -8,7 +8,7 @@ export class LeaveService {
   // private _employee = new Subject<[]>();
   // employee$ = this._employee.asObservable();
   currentLeaveStatus$ = new BehaviorSubject<[]>([]);
-
+  
   constructor() {
   }
   onSendleave(leaves: any) {
@@ -21,7 +21,5 @@ export class LeaveService {
     // console.log(status)
     //  new Observable((data)=>
     // {data.next(status)});
-
-
   }
 }

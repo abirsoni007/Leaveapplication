@@ -31,7 +31,6 @@ export class EmployeeComponent implements OnInit {
     console.log(this.leaveDetails);
   }
   onApplyLeave() {
-    debugger
     if (this.StartDate < this.currentdate) {
       console.log(this.currentdate)
    }

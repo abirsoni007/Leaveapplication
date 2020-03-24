@@ -7,12 +7,10 @@ import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
 import { MangerComponent } from './manger/manger.component';
 import { LeaveService } from './leave.service.ts.service';
-import { NewCompComponent } from './employee/new-comp/new-comp.component';
+
 import { SingupComponent } from './singup/singup.component';
 import { LoginComponent } from './login/login.component';
-
-
-
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -20,17 +18,17 @@ import { LoginComponent } from './login/login.component';
     EmployeeComponent,
     HeaderComponent,
     MangerComponent,
-    NewCompComponent,
+ 
     SingupComponent,
     LoginComponent,
-
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [LeaveService],
+  providers: [LeaveService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

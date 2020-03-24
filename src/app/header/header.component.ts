@@ -1,4 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -7,13 +11,27 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Output() featureSelected = new EventEmitter<string>();
-  constructor() { }
+  isAuth: boolean = false;
+  constructor(private _auth: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
+    this._auth.authentcatsubje.subscribe(value => {
+      this.isAuth = value
+    })
+
+    if (this.isAuth == false) {
+      this.router.navigate(['login'])
+
+    }
   }
 
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
     console.log(feature);
   }
+  onLogout() {
+    this.isAuth=false;
+    this.router.navigate(['login'])
+  }
+
 }
