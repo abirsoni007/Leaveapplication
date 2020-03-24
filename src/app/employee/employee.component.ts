@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeaveService } from '../leave.service.ts.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 
 
@@ -14,10 +14,10 @@ export class EmployeeComponent implements OnInit {
   leaveDetails: any = [];
   id: string = '';
   EmployeeName = '';
-  StartDate = '';
-  EndDate = '';
+  StartDate:number;
+  EndDate:number;
   status = 'Pending';
-   currentdate: any = new Date();
+   currentdate: number = Date.now();
   constructor(private _leaveservice: LeaveService) {
 
   }
@@ -31,7 +31,8 @@ export class EmployeeComponent implements OnInit {
     console.log(this.leaveDetails);
   }
   onApplyLeave() {
-    if (this.StartDate > this.currentdate) {
+    debugger
+    if (this.StartDate < this.currentdate) {
       console.log(this.currentdate)
    }
     if (this.StartDate > this.EndDate) {
@@ -53,3 +54,6 @@ export class EmployeeComponent implements OnInit {
 
   }
 }
+
+
+

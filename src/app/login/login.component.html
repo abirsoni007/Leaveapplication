@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="container">
+        <form (ngSubmit)="onLogIn()" #sfname="ngForm">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required #email="ngModel" class="form-control"
+                        [class.is-invaild]="email.invalid" name="email" [(ngModel)]="Email">
+                    <label>Password</label>
+                    <input type="password" required #password="ngModel" class="form-control"
+                        [class.is-invaild]="password.invalid" name="password" [(ngModel)]="Password">
+                    <br>
+                    <button class="btn btn-primary" [disabled]="!sfname.valid">Log-In
+                    </button>
+                    <br>
+                    <a href="http://localhost:4200/signup">Create Account</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

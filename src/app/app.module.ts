@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { MangerComponent } from './manger/manger.component';
 import { LeaveService } from './leave.service.ts.service';
 import { NewCompComponent } from './employee/new-comp/new-comp.component';
+import { SingupComponent } from './singup/singup.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -19,6 +21,8 @@ import { NewCompComponent } from './employee/new-comp/new-comp.component';
     HeaderComponent,
     MangerComponent,
     NewCompComponent,
+    SingupComponent,
+    LoginComponent,
 
   ],
   imports: [
