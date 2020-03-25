@@ -11,33 +11,35 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  UserDetails=[];
-  Password='';
-  Email='';
+  UserDetails = [];
+  Password = '';
+  Email = '';
   isAuth = false;
-    constructor(private router: Router, private auth : AuthenticationService ) { }
-  
-    ngOnInit(): void {
-    this.UserDetails= JSON.parse(localStorage.getItem('currentuser'))
+  constructor(private router: Router, private auth: AuthenticationService) { }
+
+  ngOnInit(): void {
+    this.UserDetails = JSON.parse(localStorage.getItem('currentuser'))
     console.log(this.UserDetails)
-    }
-    onLogIn(){
-     this.UserDetails.forEach(user => {
-      email:atob(user.email)
-      password: atob(user.password) 
-      if(this.Email===atob(user.email)){
-          if(this.Password===atob(user.password)){
-            this.router.navigate(['empolyee'])
-            this.isAuth=true;
-            this.auth.onAuthentication(this.isAuth)
-          }else{
-            alert('Password is incorrect')
-          }
-      }else{
-      alert('Email is incorrect')
+  }
+  onLogIn() {
+    this.UserDetails.forEach(user => {
+      email: atob(user.email)
+      password: atob(user.password)
+      if (this.Email === atob(user.email)) {
+        if (this.Password === atob(user.password)) {
+          this.router.navigate(['empolyee'])
+          this.isAuth = true;
+          this.auth.onAuthentication(this.isAuth)
+        } else {
+          alert('Password is incorrect')
+
+
+        }
+      } else {
+        alert('Email is incorrect')
       }
-     });
-     
-    }
+    });
+
+  }
 
 }

@@ -1,5 +1,6 @@
+<div class="center">
 <div class="row">
-    <div class="container">
+    <div class="container center">
         <form (ngSubmit)="onLogIn()" #sfname="ngForm">
             <div class="col-xs-6">
                 <div class="form-group">
@@ -13,9 +14,10 @@
                     <button class="btn btn-primary" [disabled]="!sfname.valid">Log-In
                     </button>
                     <br>
-                    <a href="http://localhost:4200/signup">Create Account</a>
+                    <a href="http://localhost:4200/signup"><em>Create Account</em></a>
                 </div>
             </div>
         </form>
     </div>
+</div>
 </div>

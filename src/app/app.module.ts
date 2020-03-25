@@ -11,6 +11,8 @@ import { LeaveService } from './leave.service.ts.service';
 import { SingupComponent } from './singup/singup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authentication.service';
+import { AlertComponent } from './alert/alert.component';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +20,9 @@ import { AuthenticationService } from './authentication.service';
     EmployeeComponent,
     HeaderComponent,
     MangerComponent,
- 
     SingupComponent,
     LoginComponent,
+    AlertComponent,
    
   ],
   imports: [
