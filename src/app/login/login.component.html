@@ -1,9 +1,10 @@
-<div class="center">
+
 <div class="row">
     <div class="container center">
         <form (ngSubmit)="onLogIn()" #sfname="ngForm">
             <div class="col-xs-6">
                 <div class="form-group">
+                    <app-alert [message]=error *ngIf=erroroccarance (close)="onDone()"></app-alert>
                     <label>Email</label>
                     <input type="email" required #email="ngModel" class="form-control"
                         [class.is-invaild]="email.invalid" name="email" [(ngModel)]="Email">
@@ -14,10 +15,9 @@
                     <button class="btn btn-primary" [disabled]="!sfname.valid">Log-In
                     </button>
                     <br>
-                    <a href="http://localhost:4200/signup"><em>Create Account</em></a>
+                    <a href="http://localhost:4200/signup"><em>create account</em></a>
                 </div>
             </div>
         </form>
     </div>
-</div>
 </div>

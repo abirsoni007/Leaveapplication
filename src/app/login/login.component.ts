@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   Password = '';
   Email = '';
   isAuth = false;
+  erroroccarance= false;
+  error;
+  
   constructor(private router: Router, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
@@ -23,23 +26,27 @@ export class LoginComponent implements OnInit {
   }
   onLogIn() {
     this.UserDetails.forEach(user => {
-      email: atob(user.email)
-      password: atob(user.password)
+      
       if (this.Email === atob(user.email)) {
         if (this.Password === atob(user.password)) {
           this.router.navigate(['empolyee'])
           this.isAuth = true;
           this.auth.onAuthentication(this.isAuth)
         } else {
-          alert('Password is incorrect')
+          this.erroroccarance= true;
+          this.error='password is incorrect';
 
 
         }
       } else {
-        alert('Email is incorrect')
+        this.error='Email is incorrect'
+        this.erroroccarance= true;
       }
     });
-
+  }
+  onDone(){
+    this.erroroccarance=false;
+    console.log('login')
   }
 
 }
