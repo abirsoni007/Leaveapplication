@@ -19,18 +19,13 @@ export class HeaderComponent implements OnInit {
       this.isAuth = value
     })
 
-    if (this.isAuth == false) {
-      this.router.navigate(['login'])
-
-    }
   }
 
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
-    console.log(feature);
   }
   onLogout() {
-    this.isAuth=false;
+    this.isAuth = false;
     this.router.navigate(['login'])
   }
 

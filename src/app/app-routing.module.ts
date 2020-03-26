@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 
 
 
-const routes: Routes = [{ path: '', redirectTo: 'signup', pathMatch: 'full' },
+const routes: Routes = [{ path: '', redirectTo: 'login', pathMatch: 'full' },
                         { path: 'empolyee', component: EmployeeComponent },
                         { path: 'manger', component: MangerComponent },
                         { path: 'signup', component: SingupComponent },   

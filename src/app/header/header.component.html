@@ -8,11 +8,10 @@
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           <a routerLink="empolyee" >Empolyee</a></li>
         <li routerLinkActive="active"><a routerLink="/manger">Manger</a></li>
-      </ul>
+      </ul> 
       <div class="nav navbar-nav navbar-right" *ngIf="isAuth">
-        <a class="button" role="button" (click)="onLogout()">Log-out</a>
+       <li> <a class="button" role="button" (click)="onLogout()">Logout</a></li>
       </div>
-      
     </div>
   </div>
 </nav>

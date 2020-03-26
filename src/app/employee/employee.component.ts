@@ -14,26 +14,21 @@ export class EmployeeComponent implements OnInit {
   leaveDetails: any = [];
   id: string = '';
   EmployeeName = '';
-  StartDate:number;
-  EndDate:number;
+  StartDate: number;
+  EndDate: number;
   status = 'Pending';
-   currentdate: number = Date.now();
   constructor(private _leaveservice: LeaveService) {
 
   }
 
   ngOnInit(): void {
-    // this.leaveDetails= this._leaveservice.currentLeaveStatus$.getValue();
-    // console.log(this.leaveDetails);
     this._leaveservice.currentLeaveStatus$.subscribe(details => {
       this.leaveDetails = details
     })
     console.log(this.leaveDetails);
   }
   onApplyLeave() {
-    if (this.StartDate < this.currentdate) {
-      console.log(this.currentdate)
-   }
+   
     if (this.StartDate > this.EndDate) {
       alert("Please Enter a valid date");
 
@@ -48,7 +43,7 @@ export class EmployeeComponent implements OnInit {
       });
       this._leaveservice.onSendleave(this.leaveDetails);
       this.applyForm.reset();
-      // this._employeeservice.leavedetail.next(this.leaveDetails);
+      
     }
 
   }
